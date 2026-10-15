@@ -1,0 +1,110 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>DeathNoteCheaterWithin</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+
+    <!-- Portable Game Directory Discovery (Works out-of-the-box on standard drives or via -p:GameDir=...) -->
+    <GameDir Condition="'$(GameDir)' == ''">$(DNKW_PATH)</GameDir>
+    <GameDir Condition="'$(GameDir)' == '' and Exists('C:\Program Files (x86)\Steam\steamapps\common\DEATH NOTE Killer Within')">C:\Program Files (x86)\Steam\steamapps\common\DEATH NOTE Killer Within</GameDir>
+    <GameDir Condition="'$(GameDir)' == '' and Exists('C:\Program Files\Steam\steamapps\common\DEATH NOTE Killer Within')">C:\Program Files\Steam\steamapps\common\DEATH NOTE Killer Within</GameDir>
+    <GameDir Condition="'$(GameDir)' == '' and Exists('D:\SteamLibrary\steamapps\common\DEATH NOTE Killer Within')">D:\SteamLibrary\steamapps\common\DEATH NOTE Killer Within</GameDir>
+    <GameDir Condition="'$(GameDir)' == '' and Exists('E:\SteamLibrary\steamapps\common\DEATH NOTE Killer Within')">E:\SteamLibrary\steamapps\common\DEATH NOTE Killer Within</GameDir>
+    <GameDir Condition="'$(GameDir)' == '' and Exists('F:\SteamLibrary\steamapps\common\DEATH NOTE Killer Within')">F:\SteamLibrary\steamapps\common\DEATH NOTE Killer Within</GameDir>
+    <GameDir Condition="'$(GameDir)' == '' and Exists('C:\Steam\steamapps\common\DEATH NOTE Killer Within')">C:\Steam\steamapps\common\DEATH NOTE Killer Within</GameDir>
+    <GameDir Condition="'$(GameDir)' == '' and Exists('D:\Steam\steamapps\common\DEATH NOTE Killer Within')">D:\Steam\steamapps\common\DEATH NOTE Killer Within</GameDir>
+    <GameDir Condition="'$(GameDir)' == ''">..\</GameDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- MelonLoader Net6 assemblies -->
+    <Reference Include="MelonLoader">
+      <HintPath>$(GameDir)\MelonLoader\net6\MelonLoader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(GameDir)\MelonLoader\net6\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppInterop.Runtime">
+      <HintPath>$(GameDir)\MelonLoader\net6\Il2CppInterop.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+
+    <!-- Il2Cpp Interop Game assemblies -->
+    <Reference Include="Il2Cppmscorlib">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\Il2Cppmscorlib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\Il2CppSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppSystem.Core">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\Il2CppSystem.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppGame">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\Il2CppGame.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppGR">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\Il2CppGR.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppPhotonRealtime">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\Il2CppPhotonRealtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppPhotonUnityNetworking">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\Il2CppPhotonUnityNetworking.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+
+    <!-- Unity Engine modules -->
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\UnityEngine.AudioModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\Unity.TextMeshPro.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2CppCriMw.CriWare.Runtime">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\Il2CppCriMw.CriWare.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Il2Cppcom.rlabrecque.steamworks.net">
+      <HintPath>$(GameDir)\MelonLoader\Il2CppAssemblies\Il2Cppcom.rlabrecque.steamworks.net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
